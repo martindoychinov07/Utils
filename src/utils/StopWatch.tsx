@@ -1,5 +1,5 @@
 import {useEffect, useRef, useState} from "react";
-import {formatTimeDiff} from "./async/AsyncUtils.tsx";
+import {formatTimeDiff} from "./async/AsyncUtils";
 
 export function StopWatch() {
   const start = useRef(new Date().getTime());

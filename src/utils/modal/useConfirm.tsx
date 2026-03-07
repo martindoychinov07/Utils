@@ -1,6 +1,6 @@
-import {useI18n} from "../../context/i18n/useI18n.tsx";
-import type {ModalComponent, ModalProps} from "./Modal.tsx";
-import useModal from "./useModal.tsx";
+import {useI18n} from "../../context/i18n/useI18n";
+import type {ModalComponent, ModalProps} from "./Modal";
+import useModal from "./useModal";
 import type { ReactNode } from "react";
 
 interface ConfirmArgs {
@@ -13,7 +13,7 @@ interface ConfirmResult {
   confirmed?: boolean;
 }
 
-export function useConfirm() {
+export function useConfirm(): ReturnType<typeof useModal> {
   const { t } = useI18n();
 
   const Content: ModalComponent<ConfirmResult, ConfirmArgs> = (props) => {

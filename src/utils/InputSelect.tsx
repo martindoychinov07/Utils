@@ -1,8 +1,8 @@
 import { useEffect, useState, type HTMLAttributes } from "react";
 import { get } from "react-hook-form";
 import type { ClassNameRule, InputOption, InputProps } from "./Input.tsx";
-import { useI18n } from "../context/i18n/useI18n.tsx";
-import { toClassName } from "./useFormat.tsx";
+import { useI18n } from "../context/i18n/useI18n";
+import { toClassName } from "./useFormat";
 
 export function InputSelect<T extends object>(props: InputProps<T>) {
   const { t } = useI18n();

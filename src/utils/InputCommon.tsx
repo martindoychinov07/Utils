@@ -1,7 +1,7 @@
 import type {ClassNameRule, InputProps} from "./Input.tsx";
-import {toClassName} from "./useFormat.tsx";
+import {toClassName} from "./useFormat";
 import { type HTMLAttributes, useCallback, useEffect, useRef, useState } from "react";
-import { useI18n } from "../context/i18n/useI18n.tsx";
+import { useI18n } from "../context/i18n/useI18n";
 import { get } from "react-hook-form";
 
 function InputCommon<T extends object>(props: InputProps<T>) {

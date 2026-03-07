@@ -1,7 +1,7 @@
-import {generateCalendarDates} from "./DateUtils.ts";
+import {generateCalendarDates} from "./DateUtils";
 import {useState} from "react";
-import {useI18n} from "../context/i18n/useI18n.tsx";
-import {range} from "./NumberUtils.ts";
+import {useI18n} from "../context/i18n/useI18n";
+import {range} from "./NumberUtils";
 
 interface CalendarProps {
   date?: Date | undefined | null;

@@ -1,5 +1,5 @@
 import type {ClassNameRule, InputProps} from "./Input.tsx";
-import {toClassName} from "./useFormat.tsx";
+import {toClassName} from "./useFormat";
 
 export function InputButton<T extends object>(props: InputProps<T>) {
   // const form = props.form;

@@ -1,6 +1,6 @@
 import type {ReactNode} from "react";
 import {NavLink, Outlet} from "react-router-dom";
-import {useI18n} from "../context/i18n/useI18n.tsx";
+import {useI18n} from "../context/i18n/useI18n";
 
 interface AppLayoutProps {
   title?: ReactNode;

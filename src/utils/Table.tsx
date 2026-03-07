@@ -1,4 +1,4 @@
-import type {LayoutModel, LayoutModelItem} from "./LayoutModel.ts";
+import type {LayoutModel, LayoutModelItem} from "./LayoutModel";
 import {
   type ReactNode,
   useCallback,
@@ -7,8 +7,8 @@ import {
   useRef,
   useState
 } from "react";
-import type {InputFormatter} from "./Input.tsx";
-import {useI18n} from "../context/i18n/useI18n.tsx";
+import type {InputFormatter} from "./Input";
+import {useI18n} from "../context/i18n/useI18n";
 import * as React from "react";
 
 export type TableComponent<T> = (props: {entry: T, formatter: InputFormatter, item: LayoutModelItem<T>, index: number}) => ReactNode;

@@ -1,5 +1,5 @@
-import type {ClassNameRule, InputProps} from "./Input.tsx";
-import {toClassName} from "./useFormat.tsx";
+import type {ClassNameRule, InputProps} from "./Input";
+import {toClassName} from "./useFormat";
 import type { Path } from "react-hook-form";
 
 export function InputToggle<T extends object>(props: InputProps<T>) {

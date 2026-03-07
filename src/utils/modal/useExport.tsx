@@ -1,6 +1,6 @@
-import {useI18n} from "../../context/i18n/useI18n.tsx";
-import type {ModalComponent, ModalProps} from "./Modal.tsx";
-import useModal from "./useModal.tsx";
+import {useI18n} from "../../context/i18n/useI18n";
+import type {ModalComponent, ModalProps} from "./Modal";
+import useModal from "./useModal";
 import { type ReactNode, useEffect, useMemo } from "react";
 
 interface ExportArgs {
@@ -17,7 +17,7 @@ interface ExportResult {
 
 const STORAGE_KEY = "csv";
 
-export function useExport() {
+export function useExport(): ReturnType<typeof useModal> {
   const { t } = useI18n();
 
   const Content: ModalComponent<ExportResult, ExportArgs> = (props) => {

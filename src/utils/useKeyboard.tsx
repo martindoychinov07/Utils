@@ -1,5 +1,5 @@
 import { type DependencyList, useEffect } from "react";
-import type { KeyCode } from "./KeyCode.ts";
+import type { KeyCode } from "./KeyCode";
 
 export type FocusableField =
   | HTMLInputElement

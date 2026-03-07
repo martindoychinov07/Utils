@@ -1,4 +1,4 @@
-import {Modal, type ModalCloseEvent, type ModalProps, type ModalResolve} from "./Modal.tsx";
+import {Modal, type ModalCloseEvent, type ModalProps, type ModalResolve} from "./Modal";
 import { type ReactElement, useCallback, useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 

@@ -1,4 +1,4 @@
-import { formatDate } from "./DateUtils.ts";
+import { formatDate } from "./DateUtils";
 import type { RefObject } from "react";
 
 export function getSelection<D>(selection: "one" | "many", selected: string[], key: string | undefined, data?: D[], index?: number, ctrlKey?: boolean, shiftKey?: boolean) {

@@ -1,7 +1,7 @@
 import type {ReactNode} from "react";
 
-import type {AsyncState} from "./useAsyncState.tsx";
-import {Loading} from "../Loading.tsx";
+import type {AsyncState} from "./useAsyncState";
+import {Loading} from "../Loading";
 
 export function AsyncFragment<T, P>(props: {
   asyncState?: AsyncState<T, P>,

@@ -1,26 +1,26 @@
-import {useAsyncState} from "./async/useAsyncState.tsx";
-import {AsyncFragment} from "./async/AsyncFragment.tsx";
+import {useAsyncState} from "./async/useAsyncState";
+import {AsyncFragment} from "./async/AsyncFragment";
 import { type Key, type ReactNode, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Table } from "./Table.tsx";
-import {useFormat} from "./useFormat.tsx";
+import { Table } from "./Table";
+import {useFormat} from "./useFormat";
 import { type Path, type SubmitHandler, useForm } from "react-hook-form";
-import {LayoutInput} from "./LayoutInput.tsx";
+import {LayoutInput} from "./LayoutInput";
 import type {
   FormValue,
   CrudFormModel,
   ListMetadata,
   ListType
 } from "./CrudFormModel.ts";
-import {formatDate, parseDate, prepareDateProps} from "./DateUtils.ts";
-import type {ModalComponentProps} from "./modal/Modal.tsx";
-import {useConfirm} from "./modal/useConfirm.tsx";
-import {useI18n} from "../context/i18n/useI18n.tsx";
-import {useCalendar} from "./modal/useCalendar.tsx";
-import { copyTable, getSelection } from "./TableUtils.tsx";
-import type { SelectionType } from "./modal/useModal.tsx";
-import { useKeyboardNavigation } from "./useKeyboard.tsx";
-import { findEnabled, splitPath } from "./LayoutModel.ts";
-import { useExport } from "./modal/useExport.tsx";
+import {formatDate, parseDate, prepareDateProps} from "./DateUtils";
+import type {ModalComponentProps} from "./modal/Modal";
+import {useConfirm} from "./modal/useConfirm";
+import {useI18n} from "../context/i18n/useI18n";
+import {useCalendar} from "./modal/useCalendar";
+import { copyTable, getSelection } from "./TableUtils";
+import type { SelectionType } from "./modal/useModal";
+import { useKeyboardNavigation } from "./useKeyboard";
+import { findEnabled, splitPath } from "./LayoutModel";
+import { useExport } from "./modal/useExport";
 
 export interface ListFormProps<F extends ListMetadata & SelectionType, D> {
   model: CrudFormModel<F, D>;
@@ -222,7 +222,7 @@ function CrudForm<F extends ListMetadata & SelectionType, D>(props: CrudModalFor
           ? await model.table.defaults?.(oldValue, actionValue)
           : oldValue;
         formUse.setValue("selected", [...selected, "0"]);
-        formUse.setValue("input", { ...newValue, [ID]: 0 } as D);
+        formUse.setValue("input" as any, { ...newValue, [ID]: 0 } as D);
         formUse.setValue("action", actionValue);
       }
       else if (actionValue === "edit") {
@@ -233,7 +233,7 @@ function CrudForm<F extends ListMetadata & SelectionType, D>(props: CrudModalFor
         const found = findIndex(content, selectedOne);
         if (found >= 0) {
           formUse.setValue("action", actionValue);
-          formUse.setValue("input", content[found]);
+          formUse.setValue("input" as any, content[found]);
         }
       }
       else if (actionValue === "save") {
@@ -258,9 +258,9 @@ function CrudForm<F extends ListMetadata & SelectionType, D>(props: CrudModalFor
                   const merged = [...content.slice(0, found), created, ...content.slice(found + 1)];
                   data.update({ ...data.result, content: merged });
                   formUse.setValue("selected", [`${created[ID]}`]);
-                  formUse.setValue("input", undefined);
+                  formUse.setValue("input" as any, undefined);
                 }
-                formUse.setValue("input", undefined);
+                formUse.setValue("input" as any, undefined);
                 formUse.setValue("action", undefined);
               }
               catch (reason) {
@@ -281,7 +281,7 @@ function CrudForm<F extends ListMetadata & SelectionType, D>(props: CrudModalFor
             data.update({ ...data.result, content: merged });
           }
         }
-        formUse.setValue("input", undefined);
+        formUse.setValue("input" as any, undefined);
         formUse.setValue("action", actionValue);
       }
       else if (actionValue === "delete") {
@@ -293,7 +293,7 @@ function CrudForm<F extends ListMetadata & SelectionType, D>(props: CrudModalFor
           title: t("~confirm.delete.title"),
           content: t("~confirm.question")
         });
-        if (question.result?.confirmed) {
+        if ((question.result as { confirmed?: boolean })?.confirmed) {
           for (let i = 0; i < selected.length; i++) {
             const id = Number(selected[i]);
             if (isFinite(id) && model.action.remove) {
@@ -311,9 +311,14 @@ function CrudForm<F extends ListMetadata & SelectionType, D>(props: CrudModalFor
           infoSelectRequired();
           return;
         }
+
         const question = await modalExport.value({ title: t("~confirm.export.title") });
-        const csv = question.result;
-        if (csv?.confirmed) {
+
+        // assert the structure of result
+        type ExportResult = { confirmed?: boolean; bom?: string; sep?: string; eol?: string };
+        const csv = question.result as ExportResult;
+
+        if (csv.confirmed) {
           copyTable(tableRef, tableContext, csv.bom, csv.sep, csv.eol);
         }
       }
@@ -342,11 +347,25 @@ function CrudForm<F extends ListMetadata & SelectionType, D>(props: CrudModalFor
           // console.log({fn, path, value, target});
 
           if (fn === "calendar") {
-            const res = await modalCalendar.value(
-              {date: parseDate(formUse.getValues(value as Path<typeof model.form>) as string, t("~format.datetime"))}
-            );
+            const res = await modalCalendar.value({
+              date: parseDate(
+                formUse.getValues(value as Path<typeof model.form>) as string,
+                t("~format.datetime")
+              )
+            });
+
+            type CalendarResult = { date: string | Date };
+
             if (res.result) {
-              formUse.setValue(value as Path<typeof model.form>, formatDate(res.result.date, t("~format.datetime")));
+              const result = res.result as CalendarResult;
+
+              // ensure we pass a Date to formatDate
+              const dateValue = result.date instanceof Date ? result.date : new Date(result.date);
+
+              formUse.setValue(
+                value as Path<typeof model.form>,
+                formatDate(dateValue, t("~format.datetime"))
+              );
             }
           }
           else {

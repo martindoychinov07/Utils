@@ -1,5 +1,5 @@
-import {StopWatch} from "../StopWatch.tsx";
-import type {AsyncState} from "./useAsyncState.tsx";
+import {StopWatch} from "../StopWatch";
+import type {AsyncState} from "./useAsyncState";
 
 export function formatTimeDiff(diff: number) {
   const S = Math.floor(diff / 100) % 10;

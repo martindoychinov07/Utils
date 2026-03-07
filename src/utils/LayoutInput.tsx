@@ -1,7 +1,7 @@
-import {Input, type InputFormatter, type InputOptions, type InputProps} from "./Input.tsx";
-import type {LayoutModelItem} from "./LayoutModel.ts";
+import {Input, type InputFormatter, type InputOptions, type InputProps} from "./Input";
+import type {LayoutModelItem} from "./LayoutModel";
 import type { Path, UseFormReturn } from "react-hook-form";
-import {useI18n} from "../context/i18n/useI18n.tsx";
+import {useI18n} from "../context/i18n/useI18n";
 
 interface LayoutInputProps<T extends object> {
   form: UseFormReturn<any, any>,

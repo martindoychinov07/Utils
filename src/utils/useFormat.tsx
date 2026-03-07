@@ -1,7 +1,7 @@
-import {defaultFormatDatetime, formatDate, parseDate} from "./DateUtils.ts";
-import { formatNumber, normalizeDecimalInput } from "./NumberUtils.ts";
-import type {ClassNameRule, InputFormatter} from "./Input.tsx";
-import {useI18n} from "../context/i18n/useI18n.tsx";
+import {defaultFormatDatetime, formatDate, parseDate} from "./DateUtils";
+import { formatNumber, normalizeDecimalInput } from "./NumberUtils";
+import type {ClassNameRule, InputFormatter} from "./Input";
+import {useI18n} from "../context/i18n/useI18n";
 
 export function useFormat() {
   const { t } = useI18n();

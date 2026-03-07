@@ -3,12 +3,12 @@ import {
   type UseFormReturn
 } from "react-hook-form";
 import { type HTMLInputAutoCompleteAttribute, type HTMLInputTypeAttribute, type ReactNode } from "react";
-import { InputSelect } from "./InputSelect.tsx";
-import { InputButton } from "./InputButton.tsx";
-import InputCommon from "./InputCommon.tsx";
-import { InputToggle } from "./InputToggle.tsx";
-import { ModalIcon } from "./modal/ModalIcon.tsx";
-import type { ItemRules } from "./LayoutModel.ts";
+import { InputSelect } from "./InputSelect";
+import { InputButton } from "./InputButton";
+import InputCommon from "./InputCommon";
+import { InputToggle } from "./InputToggle";
+import { ModalIcon } from "./modal/ModalIcon";
+import type { ItemRules } from "./LayoutModel";
 
 export type InputFormatter = (value: string, format?: string | null | undefined, normalize?: boolean) => string | null | undefined;
 export type InputOption = { label: string, value?: string | number, disabled?: boolean };

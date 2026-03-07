@@ -1,7 +1,13 @@
-import type { LayoutModel } from "./LayoutModel.ts";
-import type { InputOptions } from "./Input.tsx";
-import type { PageMetadata } from "../api/sales";
-import type { SelectionType } from "./modal/useModal.tsx";
+import type { LayoutModel } from "./LayoutModel";
+import type { InputOptions } from "./Input";
+import type { SelectionType } from "./modal/useModal";
+
+export type PageMetadata = {
+  size?: number;
+  number?: number;
+  totalElements?: number;
+  totalPages?: number;
+};
 
 export type ListType<D> = {
   content?: D[];
