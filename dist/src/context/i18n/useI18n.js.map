@@ -1,0 +1,1 @@
+{"version":3,"file":"useI18n.js","sourceRoot":"","sources":["../../../../src/context/i18n/useI18n.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,KAAK,MAAM,OAAO,CAAC;AAC/B,OAAO,EAAC,WAAW,EAAC,MAAM,eAAe,CAAC;AAE1C,MAAM,UAAU,OAAO;IACrB,OAAO,KAAK,CAAC,UAAU,CAAC,WAAW,CAAC,CAAC;AACvC,CAAC"}

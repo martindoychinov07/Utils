@@ -1,0 +1,12 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Link } from "react-router";
+import { NavLink } from "react-router-dom";
+export function MenuLayout(props) {
+    var _a, _b;
+    return (_jsxs("div", { className: "drawer h-lvh overflow-hidden", children: [_jsx("input", { id: "my-drawer-2", type: "checkbox", className: "drawer-toggle" }), _jsxs("div", { className: "drawer-content flex flex-col", children: [_jsxs("div", { className: "navbar bg-base-300 w-full min-h-auto p-0", children: [_jsx("div", { className: "flex-none lg:hidden", children: _jsx("label", { htmlFor: "my-drawer-2", "aria-label": "open sidebar", className: "btn btn-square btn-ghost", children: _jsx("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", className: "inline-block h-6 w-6 stroke-current", children: _jsx("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M4 6h16M4 12h16M4 18h16" }) }) }) }), _jsx("div", { className: "mx-2 flex-1 px-2", children: props.title }), _jsx("div", { className: "hidden lg:flex justify-between w-[calc(100%-32px)]", children: (_a = props.menu) === null || _a === void 0 ? void 0 : _a.map((submenu, index) => _jsx("ul", { className: "menu menu-horizontal p-1", children: submenu.map((item, subIndex) => {
+                                        return (_jsx("li", { children: item.link ? _jsx(NavLink, { to: { pathname: item.link }, className: ({ isActive }) => isActive ? "underline" : "no-underline", children: item.label }) : _jsx("i", { children: item.label }) }, subIndex));
+                                    }) }, index)) })] }), _jsx("div", { className: "overflow-auto h-[calc(100dvh-70px)]", children: props.children }), props.footer] }), _jsxs("div", { className: "drawer-side", children: [_jsx("label", { htmlFor: "my-drawer-2", "aria-label": "close sidebar", className: "drawer-overlay" }), _jsx("ul", { className: "menu bg-base-200 min-h-full w-80 p-1", children: (_b = props.menu) === null || _b === void 0 ? void 0 : _b.flat().map((item, index) => {
+                            return (_jsx("li", { children: item.link ? _jsx(Link, { to: { pathname: item.link }, children: item.label }) : _jsx("i", { children: item.label }) }, index));
+                        }) })] })] }));
+}
+//# sourceMappingURL=MenuLayout.js.map
