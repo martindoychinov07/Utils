@@ -27,7 +27,7 @@ export { ModalIcon } from "./src/utils/modal/ModalIcon";
 export * from "./src/utils/modal/useCalendar";
 export * from "./src/utils/modal/useConfirm";
 export * from "./src/utils/modal/useExport";
-export * from "./src/utils/modal/useModal";
+export { default as useModal } from "./src/utils/modal/useModal";
 export * from "./src/context/i18n/I18nContext";
 export * from "./src/context/i18n/useI18n";
 //# sourceMappingURL=index.js.map
