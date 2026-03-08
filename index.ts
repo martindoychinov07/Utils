@@ -4,6 +4,7 @@ export * from "./src/utils/DateUtils";
 export * from "./src/utils/NumberUtils";
 export * from "./src/utils/KeyCode";
 export * from "./src/utils/TableUtils";
+export { Table } from "./src/utils/Table";
 
 export * from "./src/utils/useFormat";
 export * from "./src/utils/useKeyboard";
@@ -31,7 +32,7 @@ export { ModalIcon } from "./src/utils/modal/ModalIcon";
 export * from "./src/utils/modal/useCalendar";
 export * from "./src/utils/modal/useConfirm";
 export * from "./src/utils/modal/useExport";
-export * from "./src/utils/modal/useModal";
+export { default as useModal } from "./src/utils/modal/useModal";
 
 export * from "./src/context/i18n/I18nContext";
 export * from "./src/context/i18n/useI18n";

@@ -4,6 +4,7 @@ export * from "./src/utils/DateUtils";
 export * from "./src/utils/NumberUtils";
 export * from "./src/utils/KeyCode";
 export * from "./src/utils/TableUtils";
+export { Table } from "./src/utils/Table";
 export * from "./src/utils/useFormat";
 export * from "./src/utils/useKeyboard";
 export * from "./src/utils/useStable";
