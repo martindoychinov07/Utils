@@ -2,6 +2,8 @@ import {Modal, type ModalCloseEvent, type ModalProps, type ModalResolve} from ".
 import { type ReactElement, useCallback, useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 
+export type { ModalProps, ModalResolve, ModalCloseEvent } from "./Modal";
+
 export type SelectionType = { selection?: "one" | "many" };
 type SelectAction<R, P> = (options?: P) => Promise<ModalResolve<R, P>>;
 
